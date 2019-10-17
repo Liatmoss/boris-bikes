@@ -13,15 +13,20 @@ class DockingStation
     @bikes = []
   end
 
-  def dock(bike)
-     fail 'Docking station full' if full?
-     bikes << bike
-   end
 
-   def release_bike
-       fail 'No bikes available' if empty?
-       bikes.pop
-     end
+  #  def broken_bike
+  #    fail 'Bike is broken' if bike.working? == false
+  #  end
+
+  def dock(bike)
+    fail 'Docking station full' if full?
+    bikes << bike
+  end
+
+  def release_bike
+    fail 'No bikes available' if empty? || bikes[0].broken?
+    bikes.pop
+  end
 
   private
 
