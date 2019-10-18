@@ -24,8 +24,10 @@ class DockingStation
   end
 
   def release_bike
-    fail 'No bikes available' if empty? || bikes[0].broken?
-    bikes.pop
+    fail 'No bikes available' if empty?
+    released = bikes.pop
+    fail 'This bike is broken' if released.broken?
+    return released
   end
 
   private
