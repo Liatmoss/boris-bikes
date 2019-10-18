@@ -1,9 +1,6 @@
 require 'docking_station'
 
 describe DockingStation do
-  it "releases a bike" do
-    DockingStation.respond_to?(:release_bike)
-  end
 
   it 'returns docked bikes' do
     bike = double :bike
