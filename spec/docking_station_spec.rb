@@ -23,17 +23,22 @@ describe DockingStation do
       # we want to release the bike we docked
       expect(subject.release_bike).to eq bike
     end
+    it 'should raise an error if bike is broken' do
+      bike = Bike.new
+      bike.report_broken
+      subject.dock(bike)
+      expect { subject.release_bike }.to raise_error 'This bike is broken'
+    end
   end
 
-    #  describe '#broken_bike'
-    #      it 'raises an error when bike is broken' do
-    #        bike = Bike.new
-    #        expect { bike.broken_bike }.to raise_error 'Bike is broken'
-    #      end
+  #      it 'raises an error when bike is broken' do
+  #        bike = Bike.new
+  #        expect { bike.broken_bike }.to raise_error 'Bike is broken'
+  #      end
 
-    it 'raises an error when there are no bikes available' do
-      expect { subject.release_bike }.to raise_error 'No bikes available'
-    end
+  it 'raises an error when there are no bikes available' do
+    expect { subject.release_bike }.to raise_error 'No bikes available'
+  end
 
   describe '#dock' do
     it 'raises an error when full' do

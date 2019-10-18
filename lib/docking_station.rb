@@ -13,11 +13,6 @@ class DockingStation
     @bikes = []
   end
 
-
-  #  def broken_bike
-  #    fail 'Bike is broken' if bike.working? == false
-  #  end
-
   def dock(bike)
     fail 'Docking station full' if full?
     bikes << bike
