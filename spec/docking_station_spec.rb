@@ -38,6 +38,12 @@ describe DockingStation do
       expect { subject.dock Bike.new }.to raise_error 'Docking station full'
     end
     
+    it "accepts broken bikes" do
+      bike = Bike.new
+      bike.report_broken
+      subject.dock(bike)
+      expect(subject.bike).to eq(@bikes)
+    end
   end
 
   it 'has a default capacity' do
